@@ -1,0 +1,136 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "一日實習生電商網頁";
+}
+<div class="col-sm-12 padding-right">
+    <div class="product-details">
+        <!--product-details-->
+        <div class="col-sm-8">
+            <div class="view-product">
+                <img id="banner" src="@ViewBag.Product.ImageURL" alt="" />
+            </div>
+            
+
+        </div>
+        <div class="col-sm-4">
+            <div class="product-information">
+                <!--/product-information-->
+                <h2>@ViewBag.Product.ProductName</h2>
+                <p><b>@ViewBag.Product.Brand</b></p>
+                <div>
+                    <img src="~/images/product-details/rating.png" alt="" />
+                </div>
+                <div>
+                    <span class="product-price" id="price">總價格 $@ViewBag.Product.Price</span>
+                </div>
+                <div>
+                    <span>
+                        <label>購買數量:</label>
+                        <input type="number" id="buyQuantity" value="1" min="1" max="__" onChange="updateInput('@ViewBag.Product.Price')"/> @*[TODO]: 取代__帶入正確值，限制購買數量上限*@
+                        <button type="button" class="btn btn-fefault cart" id="buy" onClick="onBuyClick('@ViewBag.Product.ProductId', '@ViewBag.Product.Inventory')">
+                            <i class="fa fa-shopping-cart"></i>
+                            購買
+                        </button>
+                    </span>
+                    @*用前端欄位獲取action的相對url路徑*@
+                    <div id="buyUrl" data-request-url='@Url.Action("Buy")'></div>
+                </div>
+                @{
+                    if(__){  @*[TODO]: 取代__帶入正確值，如果沒有存貨數量小於等於0則顯示警告*@
+                        <p><b>存貨數量: </b><b class="warn">暫無存貨</b></p>
+                    }
+                    else{
+                        <p><b>存貨數量: </b><b class="second-info">@ViewBag.Product.Inventory</b></p>
+                    }
+                }
+            </div><!--/product-information-->
+        </div>
+        <div id="similar-product" class="col-sm-7 carousel slide" data-ride="carousel">
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                @{ var quantity = 0;}
+                @foreach (var picture in ViewBag.Product.Thumbnails)
+                {
+                    if (quantity == 0)
+                    {
+                        <div class="item active" style="padding-left: 170px;">
+                            <img src="@picture" width="100"  height="100" style="left:auto;right:0"  onClick="onClickImage('@picture')">
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="item" style="padding-left: 170px;">
+                            <img src="@picture" width="100"  height="100" style="left:auto;right:0"  onClick="onClickImage('@picture')">
+                        </div>
+                    }
+                    quantity++;
+                }
+
+            </div>
+            <!-- Controls -->
+            <a class="left item-control" href="#similar-product" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="right item-control" href="#similar-product" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+
+        </div>
+        
+    </div><!--/product-details-->
+    <div>
+        <blockquote class="head-line">@ViewBag.__.__</blockquote> @*[TODO]: 取代__帶入正確值，填入商品的敘述欄位*@
+    </div>
+
+    @*[TODO]: 取消review前端顯示註解，撰寫正確的js function與c# controller進行串接*@
+
+    @* <div class="category-tab shop-details-tab">
+        <!--category-tab-->
+        <div class="col-sm-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#reviews" data-toggle="tab">評論 (@ViewBag.Reviews.Count)</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            @foreach (var review in ViewBag.Reviews)
+            {
+                var reviewTime = review.ReviewTime.ToString("hh:mm tt");
+                var reviewDate = review.ReviewTime.ToString("yyyy/MM/dd");
+                <div class="tab-pane fade active in reviews">
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><a href=""><i class="fa fa-user"></i>@review.Reviewer</a></li>
+                            <li><a href=""><i class="fa fa-clock-o"></i>@reviewTime</a></li>
+                            <li><a href=""><i class="fa fa-calendar-o"></i>@reviewDate</a></li>
+                        </ul>
+                        <p>@review.ReviewContent</p>
+                    </div>
+                </div>
+            }
+            <div class="tab-pane fade active in reviews">
+                <form action="#">
+                    <div class="col-sm-12">
+                        <p><b>撰寫評論</b></p>
+                    </div>
+                    <span>
+                        <input id="reviewer" type="text" placeholder="使用者名稱" required/>
+                        <input id="reviewerEmail" type="email" placeholder="電子郵件" required/>
+                    </span>
+                    <textarea id="reviewContent" placeholder="你的評論內容" required></textarea>
+                    <button type="submit" class="btn btn-default pull-right" onClick="onReviewSubmit()">
+                        提交
+                    </button>
+                </form>
+                <div id="reviewPoster" data-request-url='@Url.Action("SubmitReview")'></div>
+            </div>
+        </div>
+    </div><!--/category-tab--> *@
+</div>
+
+<script src="~/js/Shopping/productDetail.js" asp-append-version="true"></script>
+<script src="~/js/jquery.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
