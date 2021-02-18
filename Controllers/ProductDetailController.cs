@@ -21,16 +21,16 @@ namespace MCS_oneday_intern.Controllers
         public ActionResult Index(int ProductNumber = 0)
         {
             // 使用streamReader 讀取存貨json檔
-            var inventoryPath = "__/__.json"; // [TODO]: 取代__帶入正確值
+            var inventoryPath = "__/__.json"; // [StepByStep]: 取代__帶入正確值
 
             // using語句，定義一個範圍，在範圍結束時處理物件
-            using (StreamReader sr = new StreamReader(__)) // [TODO]: 取代__帶入正確值
+            using (StreamReader sr = new StreamReader(__)) // [StepByStep]: 取代__帶入正確值
             {
                 // streamReader將json檔讀成string,再將字串轉成json格式
-                var __ = JsonConvert.DeserializeObject<List<__>>(sr.ReadToEnd()); // [TODO]: 取代__帶入正確值
+                var __ = JsonConvert.DeserializeObject<List<__>>(sr.ReadToEnd()); // [StepByStep]: 取代__帶入正確值
 
                 // 將結果放至ViewBag, 就可以在View中使用此物件
-                ViewBag.Product = __; // [TODO]: 取代__帶入正確值
+                ViewBag.Product = __; // [StepByStep]: 取代__帶入正確值
             }
 
             // [TODO] 嘗試使用streamReader 讀取評價(reviews) json檔
@@ -39,7 +39,7 @@ namespace MCS_oneday_intern.Controllers
             return View();
         }
         
-
+        /**
         /// <summary>
         /// 購買產品action
         /// </summary>
@@ -70,7 +70,9 @@ namespace MCS_oneday_intern.Controllers
             System.IO.File.WriteAllText(path, json);
             return Ok(new{ message="ok", deductionQuantity=quantity});
         }
+        **/
 
+        /**
         /// <summary>
         /// 購買產品action
         /// </summary>
@@ -105,5 +107,6 @@ namespace MCS_oneday_intern.Controllers
             System.IO.File.WriteAllText(path, json);
             return Ok(new{ message="ok"});
         }
+        **/
     }
 }

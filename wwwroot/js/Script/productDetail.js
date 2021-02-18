@@ -12,8 +12,8 @@ function onBuyClick(productId, inventory) {
         quantity: num,
     }
 
-    // 若存貨小於購買數量則購買失敗
-    if (num > inventory) {
+    // [TODO]:若存貨小於購買數量則購買失敗
+    if ( __ > __ ) {   // [TODO]: 取代__帶入正確值
         alert("購買數量超出庫存請重新選擇");
         return;
     }

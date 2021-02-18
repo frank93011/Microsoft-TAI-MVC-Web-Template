@@ -39,7 +39,7 @@
                     <div id="buyUrl" data-request-url='@Url.Action("Buy")'></div>
                 </div>
                 @{
-                    if(__){  @*[TODO]: 取代__帶入正確值，如果沒有存貨數量小於等於0則顯示警告*@
+                    if(__){  @*[StepByStep]: 取代__帶入正確值，如果沒有存貨數量小於等於0則顯示警告*@
                         <p><b>存貨數量: </b><b class="warn">暫無存貨</b></p>
                     }
                     else{
@@ -83,7 +83,7 @@
         
     </div><!--/product-details-->
     <div>
-        <blockquote class="head-line">@ViewBag.__.__</blockquote> @*[TODO]: 取代__帶入正確值，填入商品的敘述欄位*@
+        <blockquote class="head-line">@ViewBag.__.__</blockquote> @*[StepByStep]: 取代__帶入正確值，填入商品的敘述欄位*@
     </div>
 
     @*[TODO]: 取消review前端顯示註解，撰寫正確的js function與c# controller進行串接*@
@@ -131,6 +131,6 @@
     </div><!--/category-tab--> *@
 </div>
 
-<script src="~/js/Shopping/productDetail.js" asp-append-version="true"></script>
+<script src="~/js/Script/productDetail.js" asp-append-version="true"></script>
 <script src="~/js/jquery.js"></script>
 <script src="~/js/bootstrap.min.js"></script>
