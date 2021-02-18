@@ -12,7 +12,7 @@
             <div class="view-product">
                 <img id="banner" src="@ViewBag.Product.ImageURL" alt="" />
             </div>
-            
+
 
         </div>
         <div class="col-sm-4">
@@ -29,7 +29,7 @@
                 <div>
                     <span>
                         <label>購買數量:</label>
-                        <input type="number" id="buyQuantity" value="1" min="1" max="__" onChange="updateInput('@ViewBag.Product.Price')"/> @*[TODO]: 取代__帶入正確值，限制購買數量上限*@
+                        <input type="number" id="buyQuantity" value="1" min="1" max="@ViewBag.Product.Inventory" onChange="updateInput('@ViewBag.Product.Price')"/>
                         <button type="button" class="btn btn-fefault cart" id="buy" onClick="onBuyClick('@ViewBag.Product.ProductId', '@ViewBag.Product.Inventory')">
                             <i class="fa fa-shopping-cart"></i>
                             購買
@@ -39,7 +39,7 @@
                     <div id="buyUrl" data-request-url='@Url.Action("Buy")'></div>
                 </div>
                 @{
-                    if(__){  @*[StepByStep]: 取代__帶入正確值，如果沒有存貨數量小於等於0則顯示警告*@
+                    if(false){  @*[TODO]: 取代'false'帶入正確值，如果沒有存貨數量小於等於0則顯示警告*@
                         <p><b>存貨數量: </b><b class="warn">暫無存貨</b></p>
                     }
                     else{
@@ -82,8 +82,9 @@
         </div>
         
     </div><!--/product-details-->
+
     <div>
-        <blockquote class="head-line">@ViewBag.__.__</blockquote> @*[StepByStep]: 取代__帶入正確值，填入商品的敘述欄位*@
+        <blockquote class="head-line"></blockquote> @*[StepByStep]: 使用Razor，填入商品的敘述欄位*@
     </div>
 
     @*[TODO]: 取消review前端顯示註解，撰寫正確的js function與c# controller進行串接*@

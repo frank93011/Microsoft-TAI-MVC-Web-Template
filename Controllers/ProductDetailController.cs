@@ -49,18 +49,18 @@ namespace MCS_oneday_intern.Controllers
         public ActionResult Buy(int productId, int quantity)
         {
             // 使用streamReader 讀取存貨json檔
-            var path = "__"; // [TODO]: 取代__帶入正確值
+            var path = "__"; // [StepbyStep]: 取代__帶入正確值
             var json = string.Empty;
 
             // using語句，定義一個範圍，在範圍結束時處理物件
-            using (StreamReader sr = new StreamReader(__)) // [TODO]: 取代__帶入正確值
+            using (StreamReader sr = new StreamReader(__)) // [StepbyStep]: 取代__帶入正確值
             {
                 // streamReader將json檔讀成string,再將字串轉成json格式
-                var products = JsonConvert.DeserializeObject<List<__>>(sr.ReadToEnd()); // [TODO]: 取代__帶入正確值
-                var product = __; // [TODO]: 取代__帶入正確值，透過Id當作Index找出Array裡面正確的Product進行修改
+                var products = JsonConvert.DeserializeObject<List<__>>(sr.ReadToEnd()); // [StepbyStep]: 取代__帶入正確值
+                var product = __; // [StepbyStep]: 取代__帶入正確值，透過Id當作Index找出Array裡面正確的Product進行修改
 
                 // 存貨數量扣除購買數量
-                product.Inventory -= __; // [TODO]: 取代__帶入正確值
+                product.Inventory -= __; // [StepbyStep]: 取代__帶入正確值
 
                 // 將改寫結果轉換成formatted的json string
                 json = JsonConvert.SerializeObject(products.ToArray(),Formatting.Indented);
