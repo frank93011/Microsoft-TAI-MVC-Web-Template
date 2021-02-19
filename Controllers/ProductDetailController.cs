@@ -16,9 +16,9 @@ namespace MCS_oneday_intern.Controllers
         /// <summary>
         /// 產品頁
         /// </summary>
-        /// <param name="ProductNumber">產品id</param>
+        /// <param name="productId">產品id</param>
         /// <returns>產品頁cshtml</returns>
-        public ActionResult Index(int ProductNumber = 0)
+        public ActionResult Index(int productId = 0)
         {
             // 使用streamReader 讀取存貨json檔
             var inventoryPath = "__/__.json"; // [StepByStep]: 取代__帶入正確值
