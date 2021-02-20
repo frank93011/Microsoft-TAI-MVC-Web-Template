@@ -4,7 +4,10 @@ function onBuyClick(productId, inventory) {
     let buyUrl = $("#buyUrl").data('request-url');
 
     // 購買數量
-    let num = $("#buyQuantity").val();
+    let num = parseInt($("#buyQuantity").val());
+    
+    //將inventory轉換成int
+    let inventoryNum = parseInt(inventory);
 
     // 將購買數量及產品Id包裝成一個物件
     let arg = {
